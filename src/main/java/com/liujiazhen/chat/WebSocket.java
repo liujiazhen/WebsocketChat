@@ -23,6 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @ServerEndpoint("/websocket/{info}")
 public class WebSocket {
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {return true;}
@@ -59,7 +60,7 @@ public class WebSocket {
         System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
         for (Map.Entry<String, WebSocket> entry : roomList.entrySet()) {
             try {
-                entry.getValue().sendMessage(name + " 加入狗子聊天室！");
+                entry.getValue().sendMessage(name + " 加入狗子聊天室！" + "当前在线人数为" + getOnlineCount());
             } catch (IOException e) {
                 e.printStackTrace();
             }
